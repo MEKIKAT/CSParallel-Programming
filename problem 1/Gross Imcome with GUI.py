@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter.font import BOLD
 
-
 constList = ["Residential","Commercial","Industrial"]
 
 def fstring():
@@ -31,7 +30,6 @@ def fstring():
         print("string found")
         popMess.after(3000, popEerr.destroy)
 
-
 def substrcation():
     cc = int(curwat.get())
     pc = int(prewat.get())
@@ -59,8 +57,6 @@ def substrcation():
         print("Current wattage must be higher")
         popMess.after(3000, popEerr.destroy)
                 
-
-
 def constType(totalW):
     n = int(catcher.get())
     ccc = constList[n]
@@ -169,9 +165,6 @@ Industrial.grid(row=3,column=2 ,padx= 10)
 
 OKbtn = Button(root,text = "OK", command=fstring , background="#666666",fg='white')
 OKbtn.grid(row=4,column=1 ,padx= 10)
-
-
-
 
 root.resizable(False,False)
 root.mainloop()
