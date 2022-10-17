@@ -4,6 +4,8 @@ from tkinter.font import BOLD
 
 constList = ["Residential","Commercial","Industrial"]
 
+
+
 def substrcation():
     cc = int(curwat.get())
     pc = int(prewat.get())
@@ -16,18 +18,21 @@ def substrcation():
     else:
         decwat.config(text="Error")
         popEerr = Toplevel()
-        popEerr.geometry("300x150")
+        popEerr.geometry("300x50")
         popEerr.title("ERROR INPUT")
-        popMess = Label(popEerr, text="Current wattage must be higher",padx=20,pady=20, font=("Century Gothic",12,BOLD))
+        popEerr.configure(background='light blue')
+
+        popMess = Label(popEerr, text="Current wattage must be higher",padx=20,pady=20, font=("Century Gothic",12,BOLD) , background="light blue")
         popMess.pack()
 
         curwat.delete(0, END)
-        curwat.insert(0, "")
         prewat.delete(0, END)
-        prewat.insert(0, "")
-
+                    
+        popEerr.resizable(False, False)
         print("Current wattage must be higher")
         popMess.after(3000, popEerr.destroy)
+                
+
 
 def constType(totalW):
     n = int(catcher.get())
@@ -132,4 +137,5 @@ Industrial.grid(row=3,column=2 ,padx= 10)
 OKbtn = Button(root,text = "OK", command=substrcation)
 OKbtn.grid(row=4,column=1 ,padx= 10)
 
+root.resizable(False,False)
 root.mainloop()
