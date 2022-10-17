@@ -4,6 +4,32 @@ from tkinter.font import BOLD
 
 constList = ["Residential","Commercial","Industrial"]
 
+def fstring():
+    twww = curwat.get() + prewat.get()
+    isnum = True
+    
+    try:
+        int(twww)
+    except ValueError:
+        isnum = False
+
+    if isnum == True:
+        substrcation()
+    else:        
+        popEerr = Toplevel()
+        popEerr.geometry("300x50")
+        popEerr.title("Alpha Numeric Found")
+        popEerr.configure(background='#666666')
+
+        popMess = Label(popEerr, text="Alpha Numeric Found",padx=20,pady=20, font=("Century Gothic",12,BOLD) ,background="#666666",fg='white')
+        popMess.pack()
+
+        curwat.delete(0, END)
+        prewat.delete(0, END)
+                    
+        popEerr.resizable(False, False)
+        print("string found")
+        popMess.after(3000, popEerr.destroy)
 
 
 def substrcation():
@@ -17,12 +43,13 @@ def substrcation():
         constType(ttw)        
     else:
         decwat.config(text="Error")
+
         popEerr = Toplevel()
         popEerr.geometry("300x50")
         popEerr.title("ERROR INPUT")
-        popEerr.configure(background='light blue')
+        popEerr.configure(background='#666666')
 
-        popMess = Label(popEerr, text="Current wattage must be higher",padx=20,pady=20, font=("Century Gothic",12,BOLD) , background="light blue")
+        popMess = Label(popEerr, text="Current wattage must be higher",padx=20,pady=20, font=("Century Gothic",12,BOLD) ,background="#666666",fg='white')
         popMess.pack()
 
         curwat.delete(0, END)
@@ -93,49 +120,58 @@ def constType(totalW):
     print(fmb)
 
 root = Tk()
-root.geometry("400x250")
-mainframe = LabelFrame(root,text="Result ",padx=80,pady=10,)
+root.geometry("400x260")
+root.title("Gross Billing")
+root.configure(background="#666666")
+
+mainframe = LabelFrame(root,text="Result ",padx=80,pady=10,background="#666666" , fg = 'white')
 mainframe.grid(row=0,column=0,pady=10,padx=10, columnspan=5)
 
-textOnframe = Label(mainframe, text= "Please Select Consumer type", font=("Century Gothic", 10))
+textOnframe = Label(mainframe, text= "Please Select Consumer type", font=("Century Gothic", 10),background="#666666",fg='white')
 textOnframe.grid(row=1, column=0,pady=10,padx=10)
 
-vresOnFrame = Label(mainframe,text="Consumer Type Value will show here")
+vresOnFrame = Label(mainframe,text="Consumer Type Value will show here",background="#666666",fg='white')
 vresOnFrame.grid(row=3, column=0)
 
 resOnFrame = Label(mainframe,
     text="Gross Monthly kw/hr\n"+
-        "Final Monthly kw/hr"
+            "Final Monthly kw/hr",
+            background="#666666",
+            fg='white'
 )
 resOnFrame.grid(row=2, column=0)
 
 
-curwatLb = Label(root, text= "Current Wattage ")
+curwatLb = Label(root, text= "Current Wattage ",background="#666666",fg='white')
 curwatLb.grid(row=1, column=0)
 curwat = Entry(root)
 curwat.grid(row=2, column=0,padx=4,pady=2)  
 
-prewatLb = Label(root, text= "Previews Wattage ")
+prewatLb = Label(root, text= "Previews Wattage ",background="#666666",fg='white')
 prewatLb.grid(row=1, column=1)
 prewat = Entry(root)
 prewat.grid(row=2, column=1,padx=4,pady=2)
 
-decwatLb = Label(root, text= "Total Wattage")
+decwatLb = Label(root, text= "Total Wattage",background="#666666",fg='white')
 decwatLb.grid(row=1, column=2)
 
-decwat = Label(root,text="------")
+decwat = Label(root,text="------",background="#666666",fg='white')
 decwat.grid(row=2, column=2,padx=4,pady=2)
 
 catcher = IntVar()
-Residential = Radiobutton(root, text = "Residential" , variable=catcher, value=0, command=constType)
+
+Residential = Radiobutton(root, text = constList[0]  , variable=catcher, value=0, command=constType,background="#666666")
 Residential.grid(row=3,column=0 ,padx= 10)
-Commercial = Radiobutton(root,text = "Commercial", variable=catcher, value=1,command=constType)
+Commercial = Radiobutton(root,text = constList[1], variable=catcher, value=1,command=constType,background="#666666")
 Commercial.grid(row=3,column=1 ,padx= 10)
-Industrial = Radiobutton(root,text = "Industrial", variable=catcher, value=2,command=constType)
+Industrial = Radiobutton(root,text = constList[2] , variable=catcher, value=2,command=constType,background="#666666")
 Industrial.grid(row=3,column=2 ,padx= 10)
 
-OKbtn = Button(root,text = "OK", command=substrcation)
+OKbtn = Button(root,text = "OK", command=fstring , background="#666666",fg='white')
 OKbtn.grid(row=4,column=1 ,padx= 10)
+
+
+
 
 root.resizable(False,False)
 root.mainloop()
