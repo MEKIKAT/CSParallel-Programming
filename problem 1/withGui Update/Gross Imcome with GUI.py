@@ -27,7 +27,7 @@ def errorMsg(error):
 
     curwat.delete(0, END)
     prewat.delete(0, END)
-    print("Error Found")                
+    print(fproblem)                
     popEerr.resizable(False, False)
     popMess.after(3000, popEerr.destroy)
 
