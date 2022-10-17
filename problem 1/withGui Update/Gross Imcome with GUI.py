@@ -122,6 +122,7 @@ def constType(totalW):
         f'Gross Monthly :{gmb} kw/hr\n'+
         f'Final Monthly : {fmb} kw/hr'
     )
+    print(gmb)
     print(fmb)
 
 root = Tk()
@@ -129,14 +130,11 @@ root.geometry("400x260")
 root.title("Gross Billing")
 root.configure(background="#666666")
 
-mainframe = LabelFrame(root,text="Result ",padx=80,pady=10,background="#666666" , fg = 'white')
+mainframe = LabelFrame(root,text="Gross Billing ",padx=80,pady=10,background="#666666" , fg = 'white')
 mainframe.grid(row=0,column=0,pady=10,padx=10, columnspan=5)
 
 textOnframe = Label(mainframe, text= "Please Select Consumer type", font=("Century Gothic", 10),background="#666666",fg='white')
 textOnframe.grid(row=1, column=0,pady=10,padx=10)
-
-vresOnFrame = Label(mainframe,text="Consumer Type Value will show here",background="#666666",fg='white')
-vresOnFrame.grid(row=3, column=0)
 
 resOnFrame = Label(mainframe,
     text="Gross Monthly kw/hr\n"+
@@ -145,6 +143,11 @@ resOnFrame = Label(mainframe,
             fg='white'
 )
 resOnFrame.grid(row=2, column=0)
+
+vresOnFrame = Label(mainframe,text="Consumer Type Value will show here",background="#666666",fg='white')
+vresOnFrame.grid(row=3, column=0)
+
+
 
 
 curwatLb = Label(root, text= "Current Wattage ",background="#666666",fg='white')
@@ -159,7 +162,6 @@ prewat.grid(row=2, column=1,padx=4,pady=2)
 
 decwatLb = Label(root, text= "Total Wattage",background="#666666",fg='white')
 decwatLb.grid(row=1, column=2)
-
 decwat = Label(root,text="------",background="#666666",fg='white')
 decwat.grid(row=2, column=2,padx=4,pady=2)
 
@@ -172,8 +174,8 @@ Commercial.grid(row=3,column=1 ,padx= 10)
 Industrial = Radiobutton(root,text = constList[2] , variable=catcher, value=2,command=constType,background="#666666")
 Industrial.grid(row=3,column=2 ,padx= 10)
 
-OKbtn = Button(root,text = "OK", command=fstring , background="#666666",fg='white')
-OKbtn.grid(row=4,column=1 ,padx= 10)
+OKbtn = Button(root,text = "OK", command=fstring , background="#666666",fg='white' , width=50)
+OKbtn.grid(row=4,column=0 ,padx= 10, columnspan=3)
 
-root.resizable(False,False)
+root.resizable(False, False)
 root.mainloop()
