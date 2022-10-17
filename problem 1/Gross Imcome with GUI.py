@@ -89,7 +89,7 @@ def constType(totalW):
 
 root = Tk()
 root.geometry("400x250")
-mainframe = LabelFrame(root,text="Canvs",padx=80,pady=10,)
+mainframe = LabelFrame(root,text="Result ",padx=80,pady=10,)
 mainframe.grid(row=0,column=0,pady=10,padx=10, columnspan=5)
 
 textOnframe = Label(mainframe, text= "Please Select Consumer type", font=("Century Gothic", 10))
